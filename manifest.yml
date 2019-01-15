@@ -1,7 +1,13 @@
+########################################################################
+#
+#  A simple manifest for deploying to Cloud Foundry
+#
+########################################################################
 ---
 applications:
-  - name: spanner-sample-sjw
-    description: 'spanner sample'
+  - name: gcp-spanner-sample
+    random-route: true
+    description: 'GCP spanner sample'
     memory: 1G
     path: target/spring-cloud-gcp-data-spanner-sample-1.1.0.BUILD-SNAPSHOT.jar
 
