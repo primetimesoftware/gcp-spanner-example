@@ -17,7 +17,8 @@ resources:
     branch: master
     file: version
     depth: 1
-    access_token: ((github_password))
+    username: ((github_username))
+    password: ((github_password))
 
 - name: gcp-spanner-example-release
   type: github-release
