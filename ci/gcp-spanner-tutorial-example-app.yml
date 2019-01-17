@@ -9,6 +9,16 @@ resources:
     branch: master
     depth: 1
 
+resources:
+- name: version
+  type: semver
+  source:
+    driver: git
+    uri: https://github.com/primetimesoftware/gcp-spanner-example.git
+    file: version
+    depth: 1
+    access_token: ((github_password))
+
 - name: gcp-spanner-example-release
   type: github-release
   source:
@@ -21,9 +31,13 @@ jobs:
 - name: build-gcp-spanner-example-package
   serial_groups: [keep-it-simple]
   plan:
+  - get: version
+    params: {bump: minor}
   - get: gcp-spanner-example
   - task: build-gcp-spanner-example-package
     file: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.yml
+  - put: version
+    params: {file: version/version}
   - put: gcp-spanner-example-release
     params:
       name: zip-files/release-name
