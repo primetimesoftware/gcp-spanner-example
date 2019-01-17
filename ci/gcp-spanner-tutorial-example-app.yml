@@ -23,7 +23,7 @@ jobs:
   - get: gcp-spanner-example
   - task: build-gcp-spanner-example-package
     file: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.yml
-  - put: gh-release
+  - put: gcp-spanner-example-release
     params:
       name: zip-files/release-name
       tag: zip-files/release-tag

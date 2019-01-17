@@ -10,6 +10,10 @@
 set -x
 set -e
 
+# Define the maven repo directory so it can be cached between builds.
+export ROOT_FOLDER=$( pwd )
+export MAVEN_OPTS="-Dmaven.repo.local=${ROOT_FOLDER}/.m2"
+
 cd gcp-spanner-example
 
 # Skipping tests because it failed running in Concourse due to a resource limitation (I think).

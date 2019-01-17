@@ -16,3 +16,6 @@ outputs:
 run:
   path: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.sh
 
+caches:
+- path: .m2/
+
