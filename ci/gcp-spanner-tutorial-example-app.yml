@@ -1,0 +1,31 @@
+---
+
+resources:
+
+- name: gcp-spanner-example
+  type: git
+  source:
+    uri: https://github.com/primetimesoftware/gcp-spanner-example.git
+    branch: master
+    depth: 1
+
+- name: gcp-spanner-example-release
+  type: github-release
+  source:
+    owner: primetimesoftware
+    repository: gcp-spanner-example
+
+jobs:
+
+- name: build-gcp-spanner-example-package
+  serial_groups: [keep-it-simple]
+  plan::
+  - get: gcp-spanner-example
+  - task: build-gcp-spanner-example-package
+    file: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.yml
+  - put: gh-release
+    params:
+      name: zip-files/release-name
+      tag: zip-files/release-tag
+      globs:
+      - zipfiles/gcp-spanner-tutorial-app.zip
