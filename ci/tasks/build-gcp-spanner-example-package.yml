@@ -9,6 +9,7 @@ image_resource:
 
 inputs:
 - name: gcp-spanner-example
+- name: version
 
 outputs:
 - name: zip-files

@@ -9,7 +9,6 @@ resources:
     branch: master
     depth: 1
 
-resources:
 - name: version
   type: semver
   source:
