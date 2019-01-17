@@ -25,5 +25,5 @@ cp target/spring-cloud-gcp-data-spanner-sample-1.1.0.BUILD-SNAPSHOT.jar ../zip-f
 cd ../zip-files
 jar cMf gcp-spanner-tutorial-app.zip manifest.yml spring-cloud-gcp-data-spanner-sample-1.1.0.BUILD-SNAPSHOT.jar
 
-cp version/version release-name
+cp ../version/version release-name
 echo "latest" > release-tag
