@@ -14,6 +14,7 @@ resources:
   source:
     owner: primetimesoftware
     repository: gcp-spanner-example
+    access_token: ((github_password))
 
 jobs:
 
@@ -28,4 +29,4 @@ jobs:
       name: zip-files/release-name
       tag: zip-files/release-tag
       globs:
-      - zipfiles/gcp-spanner-tutorial-app.zip
+      - zip-files/gcp-spanner-tutorial-app.zip
