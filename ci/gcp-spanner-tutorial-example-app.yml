@@ -19,7 +19,7 @@ jobs:
 
 - name: build-gcp-spanner-example-package
   serial_groups: [keep-it-simple]
-  plan::
+  plan:
   - get: gcp-spanner-example
   - task: build-gcp-spanner-example-package
     file: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.yml
