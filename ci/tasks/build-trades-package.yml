@@ -8,14 +8,14 @@ image_resource:
     tag: latest
 
 inputs:
-- name: gcp-spanner-example
+- name: trades-repo
 - name: version
 
 outputs:
 - name: zip-files
 
 run:
-  path: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.sh
+  path: trades-repo/ci/tasks/build-gcp-spanner-example-package.sh
 
 caches:
 - path: .m2/
