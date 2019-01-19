@@ -10,4 +10,4 @@ fi
 target=$1
 this_directory=`dirname "$0"`
 
-fly -t ${target} set-pipeline -p gcp-spanner-tutorial-example-app -c ${this_directory}/gcp-spanner-tutorial-example-app.yml
+fly -t ${target} set-pipeline -p trades-app -c ${this_directory}/trades-pipeline.yml

@@ -14,16 +14,16 @@ set -e
 export ROOT_FOLDER=$( pwd )
 export MAVEN_OPTS="-Dmaven.repo.local=${ROOT_FOLDER}/.m2"
 
-cd gcp-spanner-example
+cd trades-repo
 
 # Skipping tests because it failed running in Concourse due to a resource limitation (I think).
 ./mvnw package -DskipTests
 
 cp manifest.yml ../zip-files/.
-cp target/spring-cloud-gcp-data-spanner-sample-1.1.0.BUILD-SNAPSHOT.jar ../zip-files/.
+cp target/trades-1.1.0.BUILD-SNAPSHOT.jar ../zip-files/.
 
 cd ../zip-files
-jar cMf gcp-spanner-tutorial-app.zip manifest.yml spring-cloud-gcp-data-spanner-sample-1.1.0.BUILD-SNAPSHOT.jar
+jar cMf trades.zip manifest.yml trades-1.1.0.BUILD-SNAPSHOT.jar
 
 cp ../version/version release-name
 echo "latest" > release-tag

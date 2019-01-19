@@ -2,10 +2,10 @@
 
 resources:
 
-- name: gcp-spanner-example
+- name: trades-repo
   type: git
   source:
-    uri: https://github.com/primetimesoftware/gcp-spanner-example.git
+    uri: https://github.com/primetimesoftware/trades.git
     branch: master
     depth: 1
 
@@ -13,35 +13,35 @@ resources:
   type: semver
   source:
     driver: git
-    uri: https://github.com/primetimesoftware/gcp-spanner-example.git
+    uri: https://github.com/primetimesoftware/trades.git
     branch: master
     file: version
     depth: 1
     username: ((github_username))
     password: ((github_password))
 
-- name: gcp-spanner-example-release
+- name: trades-release
   type: github-release
   source:
     owner: primetimesoftware
-    repository: gcp-spanner-example
+    repository: trades
     access_token: ((github_password))
 
 jobs:
 
-- name: build-gcp-spanner-example-package
+- name: build-trades-package
   serial_groups: [keep-it-simple]
   plan:
   - get: version
     params: {bump: minor}
-  - get: gcp-spanner-example
-  - task: build-gcp-spanner-example-package
-    file: gcp-spanner-example/ci/tasks/build-gcp-spanner-example-package.yml
+  - get: trades-repo
+  - task: build-trades-package
+    file: trades/ci/tasks/build-trades-package.yml
   - put: version
     params: {file: version/version}
-  - put: gcp-spanner-example-release
+  - put: trades-release
     params:
       name: zip-files/release-name
       tag: zip-files/release-tag
       globs:
-      - zip-files/gcp-spanner-tutorial-app.zip
+      - zip-files/trades.zip
