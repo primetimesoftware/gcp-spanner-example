@@ -53,8 +53,8 @@ import static org.junit.Assume.assumeThat;
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @TestPropertySource("classpath:application.properties")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { SpannerExampleDriver.class })
-public class SpannerRepositoryTests {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { TradesDriver.class })
+public class TradesRepositoryTests {
 	@LocalServerPort
 	private int port;
 
@@ -71,7 +71,7 @@ public class SpannerRepositoryTests {
 	private SpannerDatabaseAdminTemplate spannerDatabaseAdminTemplate;
 
 	@Autowired
-	private SpannerRepositoryExample spannerRepositoryExample;
+	private TradesRepositoryImpl tradesRepositoryImpl;
 
 	@BeforeClass
 	public static void checkToRun() {
@@ -84,14 +84,14 @@ public class SpannerRepositoryTests {
 	@Before
 	@After
 	public void cleanupAndSetupTables() {
-		this.spannerRepositoryExample.createTablesIfNotExists();
+		this.tradesRepositoryImpl.createTablesIfNotExists();
 		this.tradeRepository.deleteAll();
 		this.traderRepository.deleteAll();
 	}
 
 	@Test
 	public void testRestEndpoint() {
-		this.spannerRepositoryExample.runExample();
+		this.tradesRepositoryImpl.runExample();
 
 		TestRestTemplate testRestTemplate = new TestRestTemplate();
 		ResponseEntity<PagedResources<Trade>> tradesResponse = testRestTemplate.exchange(
@@ -108,7 +108,7 @@ public class SpannerRepositoryTests {
 		assertThat(this.traderRepository.count()).isEqualTo(0);
 		assertThat(this.tradeRepository.count()).isEqualTo(0);
 
-		this.spannerRepositoryExample.runExample();
+		this.tradesRepositoryImpl.runExample();
 		List<String> traderIds = ImmutableList.copyOf(this.traderRepository.findAll())
 				.stream()
 				.map(Trader::getTraderId)

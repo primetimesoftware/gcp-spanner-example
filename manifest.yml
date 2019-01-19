@@ -5,9 +5,9 @@
 ########################################################################
 ---
 applications:
-  - name: gcp-spanner-sample
+  - name: trades
     random-route: true
-    description: 'GCP spanner sample'
+    description: 'Trades'
     memory: 1G
-    path: target/spring-cloud-gcp-data-spanner-sample-1.1.0.BUILD-SNAPSHOT.jar
+    path: target/trades-1.1.0.BUILD-SNAPSHOT.jar
 

@@ -29,24 +29,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 /**
- * Application to execute the sample app for Spanner.
+ * A trades application to demonstrate using Spanner.
  *
  * @author Daniel Zou
  */
 @SpringBootApplication
-public class SpannerExampleDriver {
+public class TradesDriver {
 
-	private static final Log LOGGER = LogFactory.getLog(SpannerExampleDriver.class);
-
-	@Autowired
-	private SpannerRepositoryExample spannerRepositoryExample;
+	private static final Log LOGGER = LogFactory.getLog(TradesDriver.class);
 
 	@Autowired
-	private SpannerTemplateExample spannerTemplateExample;
+	private TradesRepositoryImpl tradesRepositoryImpl;
+
+	@Autowired
+	private TradesTemplate tradesTemplate;
 
 	public static void main(String[] args) {
 		System.out.println(Arrays.toString(args));
-		SpringApplication.run(SpannerExampleDriver.class, args);
+		SpringApplication.run(TradesDriver.class, args);
 	}
 
 	@Bean
@@ -54,7 +54,7 @@ public class SpannerExampleDriver {
 	ApplicationRunner applicationRunner() {
 		return (args) -> {
 				LOGGER.info("Running the Spanner Repository Example.");
-				this.spannerRepositoryExample.runExample();
+				this.tradesRepositoryImpl.runExample();
 		};
 	}
 }

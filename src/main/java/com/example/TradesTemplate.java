@@ -37,8 +37,8 @@ import org.springframework.stereotype.Component;
  * @author Chengyuan Zhao
  */
 @Component
-public class SpannerTemplateExample {
-	private static final Log LOGGER = LogFactory.getLog(SpannerTemplateExample.class);
+public class TradesTemplate {
+	private static final Log LOGGER = LogFactory.getLog(TradesTemplate.class);
 
 	@Autowired
 	private SpannerOperations spannerOperations;
@@ -49,7 +49,7 @@ public class SpannerTemplateExample {
 	@Autowired
 	private SpannerDatabaseAdminTemplate spannerDatabaseAdminTemplate;
 
-	public void runExample() {
+	public void run() {
 		createTablesIfNotExists();
 		this.spannerOperations.delete(Trader.class, KeySet.all());
 		this.spannerOperations.delete(Trade.class, KeySet.all());

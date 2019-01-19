@@ -35,8 +35,8 @@ import org.springframework.stereotype.Component;
  * @author Mike Eltsufin
  */
 @Component
-public class SpannerRepositoryExample {
-	private static final Log LOGGER = LogFactory.getLog(SpannerRepositoryExample.class);
+public class TradesRepositoryImpl {
+	private static final Log LOGGER = LogFactory.getLog(TradesRepositoryImpl.class);
 
 	@Autowired
 	private TraderRepository traderRepository;

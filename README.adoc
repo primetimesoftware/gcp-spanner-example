@@ -1,6 +1,6 @@
-= Spring Cloud GCP Cloud Spanner Starter Example
+= Trades - Spring Cloud GCP Cloud Spanner Starter Example
 
-This code example demonstrates how to read and write POJOs from Google Cloud Spanner using the Spring.
+The Trades applicatioin is demonstrates how to read and write POJOs from Google Cloud Spanner using the Spring.
 The example was originally copied from the https://github.com/spring-cloud/spring-cloud-gcp[Spring Cloud GCP Repo]
 
 This example creates a trades database and populates it with examples.

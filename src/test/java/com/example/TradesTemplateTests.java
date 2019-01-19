@@ -39,15 +39,15 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assume.assumeThat;
 
 /**
- * Tests for the Spanner template usage.
+ * Tests for the Trades template usage.
  *
  * @author Daniel Zou
  */
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @TestPropertySource("classpath:application.properties")
-@SpringBootTest(classes = { SpannerExampleDriver.class })
-public class SpannerTemplateTests {
+@SpringBootTest(classes = { TradesDriver.class })
+public class TradesTemplateTests {
 	@Autowired
 	private SpannerOperations spannerOperations;
 
@@ -55,7 +55,7 @@ public class SpannerTemplateTests {
 	private SpannerSchemaUtils spannerSchemaUtils;
 
 	@Autowired
-	private SpannerTemplateExample spannerTemplateExample;
+	private TradesTemplate tradesTemplate;
 
 	@BeforeClass
 	public static void checkToRun() {
@@ -67,17 +67,17 @@ public class SpannerTemplateTests {
 
 	@Before
 	@After
-	public void cleanupSpannerTables() {
-		this.spannerTemplateExample.createTablesIfNotExists();
+	public void cleanupTradesTables() {
+		this.tradesTemplate.createTablesIfNotExists();
 		this.spannerOperations.delete(Trader.class, KeySet.all());
 		this.spannerOperations.delete(Trade.class, KeySet.all());
 	}
 
 	@Test
-	public void testSpannerTemplateLoadsData() {
+	public void testTradesTemplateLoadsData() {
 		assertThat(this.spannerOperations.readAll(Trade.class)).isEmpty();
 
-		this.spannerTemplateExample.runExample();
+		this.tradesTemplate.run();
 
 		Set<String> tradeSpannerKeys = this.spannerOperations.readAll(Trade.class)
 				.stream()
