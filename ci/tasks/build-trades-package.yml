@@ -15,7 +15,7 @@ outputs:
 - name: zip-files
 
 run:
-  path: trades-repo/ci/tasks/build-gcp-spanner-example-package.sh
+  path: trades-repo/ci/tasks/build-trades-package.sh
 
 caches:
 - path: .m2/

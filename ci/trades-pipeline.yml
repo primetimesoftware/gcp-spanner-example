@@ -36,7 +36,7 @@ jobs:
     params: {bump: minor}
   - get: trades-repo
   - task: build-trades-package
-    file: trades/ci/tasks/build-trades-package.yml
+    file: trades-repo/ci/tasks/build-trades-package.yml
   - put: version
     params: {file: version/version}
   - put: trades-release
