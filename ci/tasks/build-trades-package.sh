@@ -25,8 +25,7 @@ cp manifest.yml ../zip-files/trades
 cp target/trades-${version}.jar ../zip-files/trades
 
 cd ../zip-files
-cd trades
-jar cMf trades.zip manifest.yml trades-${version}.jar
+jar cMf trades.zip trades
 
 cd ../
 cp ../version/version release-name

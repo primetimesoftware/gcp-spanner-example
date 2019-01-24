@@ -44,4 +44,4 @@ jobs:
       name: zip-files/release-name
       tag: zip-files/release-tag
       globs:
-      - zip-files/trades.zip
+      - zip-files/trades/trades.zip
