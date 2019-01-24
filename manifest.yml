@@ -10,5 +10,5 @@ applications:
     memory: 1G
     buildpacks:
     - java_buildpack
-    path: target/trades-1.1.0.BUILD-SNAPSHOT.jar
+    path: target/trades-*.jar
 
