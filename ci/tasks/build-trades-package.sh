@@ -28,5 +28,5 @@ cd ../zip-files
 cd trades
 jar cMf trades.zip manifest.yml trades-${version}.jar
 
-cp ../version/version release-name
+cp ../../version/version release-name
 echo "latest" > release-tag
