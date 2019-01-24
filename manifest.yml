@@ -6,7 +6,6 @@
 ---
 applications:
   - name: trades
-    random-route: true
     description: 'Trades'
     memory: 1G
     path: target/trades-1.1.0.BUILD-SNAPSHOT.jar

@@ -27,6 +27,5 @@ cp target/trades-${version}.jar ../zip-files/trades
 cd ../zip-files
 jar cMf trades.zip trades
 
-cd ../
 cp ../version/version release-name
 echo "latest" > release-tag
