@@ -14,16 +14,19 @@ set -e
 export ROOT_FOLDER=$( pwd )
 export MAVEN_OPTS="-Dmaven.repo.local=${ROOT_FOLDER}/.m2"
 
+version=$(cat version/version)
 cd trades-repo
 
 # Skipping tests because it failed running in Concourse due to a resource limitation (I think).
 ./mvnw package -DskipTests
 
-cp manifest.yml ../zip-files/.
-cp target/trades-1.1.0.BUILD-SNAPSHOT.jar ../zip-files/.
+mkdir ../zip-files/trades
+cp manifest.yml ../zip-files/trades
+cp target/trades-${version}.jar ../zip-files/trades
 
 cd ../zip-files
-jar cMf trades.zip manifest.yml trades-1.1.0.BUILD-SNAPSHOT.jar
+cd trades
+jar cMf trades.zip manifest.yml trades-${version}.jar
 
 cp ../version/version release-name
 echo "latest" > release-tag
