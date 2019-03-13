@@ -18,7 +18,7 @@ version=$(cat version/version)
 cd trades-repo
 
 # Skipping tests because it failed running in Concourse due to a resource limitation (I think).
-./mvnw package -DskipTests -Dversion=${version}
+./mvnw clean install spring-boot:repackage -P cloudfoundry -DskipTests -Dversion=${version}
 
 mkdir ../zip-files/trades
 cp manifest.yml ../zip-files/trades
